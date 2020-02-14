@@ -1,0 +1,42 @@
+<div class="container">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef> Firstname</th>
+      <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title</th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="alive">
+      <th mat-header-cell *matHeaderCellDef> Alive</th>
+      <td mat-cell *matCellDef="let element"> {{element.alive}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="home">
+      <th mat-header-cell *matHeaderCellDef>Home</th>
+      <td mat-cell *matCellDef="let element"> {{element.home}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="culture">
+      <th mat-header-cell *matHeaderCellDef>Culture</th>
+      <td mat-cell *matCellDef="let element"> {{element.culture}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
