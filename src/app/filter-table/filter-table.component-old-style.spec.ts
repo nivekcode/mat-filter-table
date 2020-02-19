@@ -48,10 +48,10 @@ describe('FilterTableComponent Old', () => {
   });
 
   it('should filter out the alive caracters if we set filter to dead', done => {
-    const deadCheckbox = fixture.debugElement.query(By.css('#deadFilter'));
-    const clickableElement = deadCheckbox.query(By.css('.mat-radio-container'));
+    const deadRadio = fixture.debugElement.query(By.css('#deadFilter'));
+    const clickableElement = deadRadio.query(By.css('.mat-radio-container'));
     clickableElement.nativeElement.click();
-    deadCheckbox.nativeElement.click();
+    deadRadio.nativeElement.click();
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       const rows = fixture.debugElement.queryAll(By.css('.mat-table tbody tr'));

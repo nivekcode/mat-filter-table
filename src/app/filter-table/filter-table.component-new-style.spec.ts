@@ -10,8 +10,11 @@ import {DebugElement} from '@angular/core';
 import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {MatTableHarness} from '@angular/material/table/testing';
+import {MatRadioButtonHarness} from '@angular/material/radio/testing';
 import {MatTab} from '@angular/material/tabs';
 import {MatInputHarness} from '@angular/material/input/testing';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatIconModule} from '@angular/material/icon';
 
 describe('FilterTableComponent', () => {
   let component: FilterTableComponent;
@@ -25,7 +28,9 @@ describe('FilterTableComponent', () => {
         BrowserAnimationsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatTableModule
+        MatTableModule,
+        MatRadioModule,
+        MatIconModule
       ]
     })
       .compileComponents();
@@ -49,6 +54,15 @@ describe('FilterTableComponent', () => {
     const table = await loader.getHarness<MatTableHarness>(MatTableHarness);
     const rows = await table.getRows();
     expect(rows.length).toBe(3);
+  });
+
+  it('should filter out the alive caracters if we set filter to dead', async () => {
+    const deadRadio = await loader.getHarness<MatRadioButtonHarness>(MatRadioButtonHarness.with({label: 'Dead'}));
+    const table = await loader.getHarness<MatTableHarness>(MatTableHarness);
+
+    await deadRadio.check();
+    const rows = await table.getRows();
+    expect(rows.length).toBe(1);
   });
 
   it('should filter the table when we enter startk as a filter text', async () => {
