@@ -36,7 +36,15 @@ export class FilterTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  applyFilter(event: Event) {
+  filterDeadOrAlive(alive: boolean) {
+    this.dataSource.filter = alive ? 'true' : 'false';
+  }
+
+  resetDeadOrAliveFilter() {
+    this.dataSource.filter = '';
+  }
+
+  applySearchFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

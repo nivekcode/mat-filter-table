@@ -3,6 +3,11 @@
   margin: 50px;
 }
 
+mat-radio-button {
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
 table {
   width: 100%;
 }

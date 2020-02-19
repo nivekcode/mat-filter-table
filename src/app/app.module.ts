@@ -9,6 +9,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatTableModule,
     MatCardModule,
     MatToolbarModule,
+    MatRadioModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

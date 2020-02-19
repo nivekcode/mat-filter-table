@@ -1,7 +1,13 @@
 <div class="container">
+  <mat-radio-group aria-label="Select an option">
+    <mat-radio-button (change)="resetDeadOrAliveFilter()">Dead and alive</mat-radio-button>
+    <mat-radio-button (change)="filterDeadOrAlive(true)" value="1">Dead</mat-radio-button>
+    <mat-radio-button (change)="filterDeadOrAlive(false)" value="2">Alive</mat-radio-button>
+  </mat-radio-group>
+
   <mat-form-field>
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+    <input matInput (keyup)="applySearchFilter($event)" placeholder="Ex. ium">
   </mat-form-field>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -23,12 +29,18 @@
 
     <ng-container matColumnDef="alive">
       <th mat-header-cell *matHeaderCellDef> Alive</th>
-      <td mat-cell *matCellDef="let element"> {{element.alive}} </td>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">
+          {{element.alive ? 'sentiment_very_satisfied' : 'sentiment_very_dissatisfied' }}
+        </mat-icon>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="home">
       <th mat-header-cell *matHeaderCellDef>Home</th>
-      <td mat-cell *matCellDef="let element"> {{element.home}} </td>
+      <td mat-cell *matCellDef="let element">
+        {{element.home}}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="culture">
