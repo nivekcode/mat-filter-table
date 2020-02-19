@@ -7,6 +7,8 @@ import {MatTableModule} from '@angular/material/table';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatIconModule} from '@angular/material/icon';
 
 describe('FilterTableComponent Old', () => {
   let component: FilterTableComponent;
@@ -19,7 +21,9 @@ describe('FilterTableComponent Old', () => {
         BrowserAnimationsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatTableModule
+        MatTableModule,
+        MatRadioModule,
+        MatIconModule
       ]
     })
       .compileComponents();
@@ -41,6 +45,19 @@ describe('FilterTableComponent Old', () => {
   it('should initially display three rows in the table', () => {
     const rows = fixture.debugElement.queryAll(By.css('.mat-table tbody tr'));
     expect(rows.length).toBe(3);
+  });
+
+  it('should filter out the alive caracters if we set filter to dead', done => {
+    const deadCheckbox = fixture.debugElement.query(By.css('#deadFilter'));
+    const clickableElement = deadCheckbox.query(By.css('.mat-radio-container'));
+    clickableElement.nativeElement.click();
+    deadCheckbox.nativeElement.click();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const rows = fixture.debugElement.queryAll(By.css('.mat-table tbody tr'));
+      expect(rows.length).toBe(1);
+      done();
+    });
   });
 
   it('should filter the table when we enter startk as a filter text', done => {

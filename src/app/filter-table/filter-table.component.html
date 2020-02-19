@@ -1,8 +1,8 @@
 <div class="container">
   <mat-radio-group aria-label="Select an option">
     <mat-radio-button (change)="resetDeadOrAliveFilter()">Dead and alive</mat-radio-button>
-    <mat-radio-button (change)="filterDeadOrAlive(true)" value="1">Dead</mat-radio-button>
-    <mat-radio-button (change)="filterDeadOrAlive(false)" value="2">Alive</mat-radio-button>
+    <mat-radio-button (change)="filterDeadOrAlive(true)" id="deadFilter" value="true">Dead</mat-radio-button>
+    <mat-radio-button (change)="filterDeadOrAlive(false)" id="aliveFilter" value="false">Alive</mat-radio-button>
   </mat-radio-group>
 
   <mat-form-field>
