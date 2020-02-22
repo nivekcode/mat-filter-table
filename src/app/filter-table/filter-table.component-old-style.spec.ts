@@ -51,16 +51,15 @@ describe('FilterTableComponent Old', () => {
     const deadRadio = fixture.debugElement.query(By.css('#deadFilter'));
     const clickableElement = deadRadio.query(By.css('.mat-radio-container'));
     clickableElement.nativeElement.click();
-    deadRadio.nativeElement.click();
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       const rows = fixture.debugElement.queryAll(By.css('.mat-table tbody tr'));
-      expect(rows.length).toBe(1);
+      expect(rows.length).toBe(5);
       done();
     });
   });
 
-  it('should filter the table when we enter startk as a filter text', done => {
+  it('should filter the table when we enter "stark" as a filter text', done => {
     const inputField = fixture.debugElement.query(By.css('.mat-input-element'));
     inputField.nativeElement.value = 'Stark';
     const keyupEvent = new Event('keyup');
@@ -68,7 +67,7 @@ describe('FilterTableComponent Old', () => {
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       const rows = fixture.debugElement.queryAll(By.css('.mat-table tbody tr'));
-      expect(rows.length).toBe(1);
+      expect(rows.length).toBe(3);
       done();
     });
   });

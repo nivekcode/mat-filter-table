@@ -21,6 +21,11 @@ const ELEMENT_DATA: GOTCharacter[] = [
     culture: 'Andal'
   },
   {firstname: 'Samwell', name: 'Tarly', title: 'Grand Maester', alive: true, origin: 'Horn Hill', culture: 'Andal'},
+  {firstname: 'Rob', name: 'Stark', title: 'King of the north', alive: false, origin: 'Winterfell', culture: 'Northmen'},
+  {firstname: 'Arya', name: 'Stark', title: 'Princess', alive: true, origin: 'Winterfell', culture: 'Northmen'},
+  {firstname: 'Tyrion', name: 'Lannister', title: 'The Imp', alive: true, origin: 'Casterly rock', culture: 'Andal'},
+  {firstname: 'Rhaegar', name: 'Targaryen', title: 'The last dragon', alive: false, origin: 'Dragonstone', culture: 'Valyrian'},
+  {firstname: 'Daenerys', name: 'Targaryen', title: 'Mother of Dragons', alive: false, origin: 'Dragonstone', culture: 'Valyrian'}
 ];
 
 @Component({
@@ -30,7 +35,7 @@ const ELEMENT_DATA: GOTCharacter[] = [
 })
 export class FilterTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['firstname', 'name', 'title', 'alive', 'home', 'culture'];
+  displayedColumns: string[] = ['firstname', 'name', 'title', 'alive', 'origin', 'culture'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   ngOnInit(): void {

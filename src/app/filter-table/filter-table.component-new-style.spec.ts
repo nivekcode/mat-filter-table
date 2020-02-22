@@ -5,13 +5,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
 import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {MatTableHarness} from '@angular/material/table/testing';
 import {MatRadioButtonHarness} from '@angular/material/radio/testing';
-import {MatTab} from '@angular/material/tabs';
 import {MatInputHarness} from '@angular/material/input/testing';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
@@ -57,19 +54,19 @@ describe('FilterTableComponent', () => {
   });
 
   it('should filter out the alive caracters if we set filter to dead', async () => {
-    const deadRadio = await loader.getHarness<MatRadioButtonHarness>(MatRadioButtonHarness.with({label: 'Dead'}));
+    const deadRadioButton = await loader.getHarness<MatRadioButtonHarness>(MatRadioButtonHarness.with({label: 'Dead'}));
     const table = await loader.getHarness<MatTableHarness>(MatTableHarness);
 
-    await deadRadio.check();
+    await deadRadioButton.check();
     const rows = await table.getRows();
-    expect(rows.length).toBe(1);
+    expect(rows.length).toBe(5);
   });
 
-  it('should filter the table when we enter startk as a filter text', async () => {
+  it('should filter the table when we enter "stark" as a filter text', async () => {
     const inputField = await loader.getHarness<MatInputHarness>(MatInputHarness);
     const table = await loader.getHarness<MatTableHarness>(MatTableHarness);
     await inputField.setValue('Stark');
     const rows = await table.getRows();
-    expect(rows.length).toBe(1);
+    expect(rows.length).toBe(3);
   });
 });
