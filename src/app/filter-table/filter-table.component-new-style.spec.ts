@@ -69,4 +69,5 @@ describe('FilterTableComponent', () => {
     const rows = await table.getRows();
     expect(rows.length).toBe(3);
   });
+
 });
