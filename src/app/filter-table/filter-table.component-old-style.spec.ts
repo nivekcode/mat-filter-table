@@ -36,7 +36,7 @@ describe('FilterTableComponent Old', () => {
   });
 
   it('should have the correct table headings', async () => {
-    const expectedHeadings = ['Firstname', 'Name', 'Title', 'Alive', 'Home', 'Culture'];
+    const expectedHeadings = ['Firstname', 'Name', 'Title', 'Alive', 'Origin', 'Culture'];
     const headings = fixture.debugElement.queryAll(By.css('.mat-table thead tr th'));
     const headingTexts = headings.map((headingElement: DebugElement) => headingElement.nativeElement.innerText);
     expect(headingTexts).toEqual(expectedHeadings);
@@ -44,7 +44,7 @@ describe('FilterTableComponent Old', () => {
 
   it('should initially display three rows in the table', () => {
     const rows = fixture.debugElement.queryAll(By.css('.mat-table tbody tr'));
-    expect(rows.length).toBe(3);
+    expect(rows.length).toBe(8);
   });
 
   it('should filter out the alive caracters if we set filter to dead', done => {

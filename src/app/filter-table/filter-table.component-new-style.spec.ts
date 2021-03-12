@@ -41,7 +41,7 @@ describe('FilterTableComponent', () => {
   });
 
   it('should have the correct table headings', async () => {
-    const expectedHeadings = ['Firstname', 'Name', 'Title', 'Alive', 'Home', 'Culture'];
+    const expectedHeadings = ['Firstname', 'Name', 'Title', 'Alive', 'Origin', 'Culture'];
     const table = await loader.getHarness<MatTableHarness>(MatTableHarness);
     const headerRows = await table.getHeaderRows();
     expect(await headerRows[0].getCellTextByIndex()).toEqual(expectedHeadings);
@@ -50,7 +50,7 @@ describe('FilterTableComponent', () => {
   it('should initially display three rows in the table', async () => {
     const table = await loader.getHarness<MatTableHarness>(MatTableHarness);
     const rows = await table.getRows();
-    expect(rows.length).toBe(3);
+    expect(rows.length).toBe(8);
   });
 
   it('should filter out the alive caracters if we set filter to dead', async () => {
